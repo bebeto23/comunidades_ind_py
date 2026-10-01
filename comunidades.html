@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Alertas con cultivos ilícitos en comunidades indígenas – INFONA</title>
+<style>
+:root{--bg:#f3f1ef;--card:#fff;--ink:#1d2a33;--muted:#5d6c76;--line:#e1ddd8;--acc:#2f6f4f;--ci:#a8561c;--asp:#6a3d9a;--chip:#e7ece9;--hov:#f0f4f1;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#161b1f;--card:#1f262b;--ink:#e6ebee;--muted:#9aa8b1;--line:#34404a;--acc:#7fc29c;--ci:#e39a62;--asp:#b49ae0;--chip:#2a343b;--hov:#27313a}}
+:root[data-theme="dark"]{--bg:#161b1f;--card:#1f262b;--ink:#e6ebee;--muted:#9aa8b1;--line:#34404a;--acc:#7fc29c;--ci:#e39a62;--asp:#b49ae0;--chip:#2a343b;--hov:#27313a}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:13px/1.4 "Segoe UI",Avenir,"Helvetica Neue",Arial,sans-serif}
+main{padding:12px;max-width:1400px;margin:0 auto}
+.top{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;margin-bottom:10px}
+h1{font-size:1.05rem;margin:0;flex:1 1 300px}
+.f{display:flex;flex-wrap:wrap;gap:4px;align-items:center}.f span{color:var(--muted);font-size:.75rem;margin-right:2px}
+button.c{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:14px;padding:3px 10px;font:inherit;font-size:.78rem;cursor:pointer}
+button.c[aria-pressed=true]{background:var(--acc);border-color:var(--acc);color:#fff}
+.sel{display:none;background:var(--ci)!important;border-color:var(--ci)!important;color:#fff!important}
+.kp{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:10px}
+.k{background:var(--card);padding:8px 10px;border-top:3px solid var(--ci)}
+.k b{display:block;font-size:1.35rem;font-variant-numeric:tabular-nums}.k small{color:var(--muted)}
+.k.a{border-color:var(--asp)}.k.kg{border-color:var(--acc)}
+.g{display:grid;grid-template-columns:.8fr 1fr 1.2fr;gap:10px}
+.cd{background:var(--card);padding:10px 12px;min-width:0}
+h2{font-size:.85rem;margin:0 0 2px}.h{color:var(--muted);font-size:.72rem;margin:0 0 8px}
+.lg{display:flex;gap:10px;font-size:.72rem;color:var(--muted);margin-bottom:6px}.lg i{display:inline-block;width:9px;height:9px;margin-right:4px;vertical-align:-1px}
+.vb{display:flex;align-items:flex-end;gap:14px;height:170px;padding-top:14px}
+.vc{flex:1;display:flex;flex-direction:column;align-items:center;height:100%;cursor:pointer;border-radius:3px}
+.vc:hover{background:var(--hov)}.vc.on{outline:2px solid var(--acc)}
+.vs{flex:1;width:55%;display:flex;flex-direction:column;justify-content:flex-end}.vs div{width:100%}
+.vt{font-weight:700;font-size:.8rem}.vl{font-size:.75rem;color:var(--muted);margin-top:3px}
+.hr{display:grid;grid-template-columns:170px 1fr 34px 40px;align-items:center;gap:6px;padding:3px;cursor:pointer;border-radius:3px}
+.hr:hover{background:var(--hov)}.hr.on{outline:2px solid var(--acc)}
+.hr .n{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}.hr .p{text-align:right;color:var(--muted);font-size:.72rem}
+.hr .nm{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar{display:flex;height:12px;background:var(--chip);border-radius:2px;overflow:hidden}
+.hl{background:var(--card);border-left:4px solid var(--ci);padding:8px 12px;margin-top:10px;font-size:.82rem}
+.nt{color:var(--muted);font-size:.72rem;margin:8px 2px 0}
+@media (max-width:980px){.g{grid-template-columns:1fr}.kp{grid-template-columns:repeat(2,1fr)}}
+</style></head><body><main>
+<div class="top"><h1>Alertas de deforestación con cultivos ilícitos en comunidades indígenas</h1>
+<div class="f" id="fy"><span>Año</span></div>
+<button class="c sel" id="dsel" title="Quitar filtro"></button><button class="c sel" id="zsel" title="Quitar filtro"></button></div>
+<div class="kp">
+<div class="k"><b id="k1"></b><small>alertas en comunidades indígenas con cultivos ilícitos</small></div>
+<div class="k kg"><b id="k2"></b><small>de las alertas con cultivos ilícitos</small></div>
+<div class="k"><b id="k3"></b><small>en Canindeyú</small></div>
+<div class="k a"><b id="k4"></b><small>también dentro de un área silvestre protegida</small></div></div>
+<div class="g">
+<div class="cd"><h2>Por año</h2><p class="h">Clic en una barra para filtrar</p>
+<div class="lg"><span><i style="background:var(--ci)"></i>Comunidad indígena</span><span><i style="background:var(--asp)"></i>+ área protegida</span></div><div class="vb" id="cy"></div></div>
+<div class="cd"><h2>Por departamento</h2><p class="h">Clic para filtrar · % del total</p><div id="cd"></div>
+<h2 style="margin-top:14px">Superposición territorial</h2><p class="h">Comunidad indígena sola o junto a un área protegida</p><div id="cs"></div></div>
+<div class="cd"><h2>Por distrito o zona</h2><p class="h">Clic para filtrar · % del total</p><div id="cz"></div></div>
+</div>
+<div class="hl"><b>Casos de mayor magnitud:</b> en Villa Ygatimí – Yby Pytá (Canindeyú), dos reportes de 2024 superaron las 100 ha de cambio estimado (250 y 255 ha) y combinan cultivo de uso ilícito, la Reserva del Bosque Mbaracayú y territorio de comunidades indígenas.</div>
+<p class="nt">Fuente: INFONA – Sistema de Alertas Tempranas, seguimiento de reportes 2024–2026 (2026 parcial). Se consideran alertas en comunidades indígenas con cultivos ilícitos los reportes remitidos a la SENAD (cultivo de uso ilícito) y al INDI (comunidad indígena); se marcan con área protegida los remitidos además al MADES. Desde 2024 se registra la remisión a estas instituciones.</p>
+</main>
+<script>
+const R=[[2024,"Amambay","Bella Vista",0,2],[2024,"Amambay","Pedro Juan Caballero – Cerro Corá",0,3],[2024,"Caazapá / Itapúa","Tavaí – Alto Verá",0,1],[2024,"Caazapá / Itapúa","Tavaí – Alto Verá",1,3],[2024,"Canindeyú","Maracaná",0,3],[2024,"Canindeyú","Otros distritos",0,1],[2024,"Canindeyú","Otros distritos",1,1],[2024,"Canindeyú","Villa Ygatimí – Yby Pytá",0,3],[2024,"Canindeyú","Villa Ygatimí – Yby Pytá",1,8],[2024,"Canindeyú","Yasy Cañy",0,4],[2024,"Canindeyú","Ypejhú",0,3],[2024,"Concepción","Otros distritos",0,1],[2024,"San Pedro","Otros distritos",0,1],[2025,"Amambay","Bella Vista",0,1],[2025,"Amambay","Bella Vista",1,1],[2025,"Amambay","Pedro Juan Caballero – Cerro Corá",0,2],[2025,"Caazapá / Itapúa","Tavaí – Alto Verá",1,1],[2025,"Canindeyú","Villa Ygatimí – Yby Pytá",0,1],[2025,"Canindeyú","Ypejhú",0,1],[2025,"Concepción","Otros distritos",0,1],[2026,"Canindeyú","Ypejhú",0,1]];// [año, dpto, zona, asp, n]
+const T=[[2024,"Alto Paraná",3],[2024,"Amambay",33],[2024,"Caaguazú",12],[2024,"Caaguazú/Canindeyú",4],[2024,"Caaguazú/San Pedro/ Canindeyú",1],[2024,"Caazapá / Itapúa",13],[2024,"Canindeyú",73],[2024,"Concepción",19],[2024,"Cordillera",1],[2024,"Guairá",1],[2024,"Itapúa",5],[2024,"San Pedro",7],[2024,"San Pedro/Caaguazú",1],[2025,"Alto Paraná",1],[2025,"Amambay",42],[2025,"Caaguazú",14],[2025,"Caaguazú/Canindeyú",1],[2025,"Caazapá / Itapúa",4],[2025,"Canindeyú",23],[2025,"Concepción",27],[2025,"Guairá",1],[2025,"Itapúa",2],[2025,"San Pedro",13],[2026,"Amambay",6],[2026,"Caaguazú",3],[2026,"Canindeyú",7],[2026,"San Pedro",5]];// alertas con cultivos ilícitos (SENAD): [año, dpto, n]
+const S={y:null,d:null,z:null};const fmt=n=>n.toLocaleString("es-PY");const pc=(a,b)=>b?Math.round(a/b*100)+" %":"–";
+const fy=document.getElementById("fy");
+[[null,"Todos"],[2024,"2024"],[2025,"2025"],[2026,"2026*"]].forEach(([v,l])=>{const b=document.createElement("button");b.className="c";b.textContent=l;b.dataset.v=v===null?"":v;b.onclick=()=>{S.y=v;draw()};fy.appendChild(b)});
+dsel.onclick=()=>{S.d=null;draw()};zsel.onclick=()=>{S.z=null;draw()};
+const F=skip=>R.filter(r=>(skip==="y"||S.y===null||r[0]===S.y)&&(skip==="d"||S.d===null||r[1]===S.d)&&(skip==="z"||S.z===null||r[2]===S.z));
+const sum=(rs,f=()=>1)=>rs.reduce((t,r)=>t+(f(r)?r[4]:0),0);
+function grp(rs,k){const m=new Map();rs.forEach(r=>{const g=m.get(r[k])||{n:0,a:0};g.n+=r[4];g.a+=r[3]?r[4]:0;m.set(r[k],g)});return [...m].sort((a,b)=>b[1].n-a[1].n)}
+function hbars(el,data,tot,key){const mx=Math.max(1,...data.map(x=>x[1].n));
+ el.innerHTML=data.map(([k,g])=>`<div class="hr${key&&S[key]===k?" on":""}" data-k="${k}"><span class="nm">${k}</span><div class="bar" style="width:${g.n/mx*100}%"><div style="width:${(g.n-g.a)/g.n*100}%;background:var(--ci)"></div><div style="flex:1;background:var(--asp)"></div></div><span class="n">${fmt(g.n)}</span><span class="p">${pc(g.n,tot)}</span></div>`).join("")||"<p class='h'>Sin datos</p>";
+ if(key)el.querySelectorAll(".hr").forEach(e=>e.onclick=()=>{const v=e.dataset.k;S[key]=S[key]===v?null:v;draw()})}
+function draw(){
+ fy.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.v===(S.y===null?"":String(S.y)))));
+ dsel.style.display=S.d?"inline-block":"none";dsel.textContent=(S.d||"")+" ✕";zsel.style.display=S.z?"inline-block":"none";zsel.textContent=(S.z||"")+" ✕";
+ const X=F(),N=sum(X),A=sum(X,r=>r[3]);
+ const den=T.filter(t=>(S.y===null||t[0]===S.y)&&(S.d===null||t[1]===S.d)).reduce((s,t)=>s+t[2],0);
+ k1.textContent=fmt(N);k2.textContent=S.z?"–":pc(N,den);k3.textContent=pc(sum(X,r=>r[1]==="Canindeyú"),N);k4.textContent=fmt(A);
+ const Y=new Map(grp(F("y"),0));const ys=[2024,2025,2026];const my=Math.max(1,...ys.map(y=>(Y.get(y)||{n:0}).n));
+ cy.innerHTML=ys.map(y=>{const g=Y.get(y)||{n:0,a:0};const h=g.n/my*100;return `<div class="vc${S.y===y?" on":""}" data-y="${y}"><div class="vt">${fmt(g.n)}</div><div class="vs"><div style="height:${h*g.a/(g.n||1)}%;background:var(--asp)"></div><div style="height:${h*(g.n-g.a)/(g.n||1)}%;background:var(--ci)"></div></div><div class="vl">${y}${y===2026?"*":""}</div></div>`}).join("");
+ cy.querySelectorAll(".vc").forEach(e=>e.onclick=()=>{const y=+e.dataset.y;S.y=S.y===y?null:y;draw()});
+ hbars(cd,grp(F("d"),1),sum(F("d")),"d");
+ hbars(cz,grp(F("z"),2),sum(F("z")),"z");
+ const sp=[["Solo comunidad indígena",{n:N-A,a:0}],["Comunidad + área protegida",{n:A,a:A}]].filter(x=>x[1].n);
+ hbars(cs,sp,N,null);
+}
+draw();
+</script></body></html>
